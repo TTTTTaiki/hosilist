@@ -16,7 +16,9 @@ cors = CORS(app)
 @app.route('/hosis', methods=['GET'])
 def get_hosis():
     sql = '''
-    SELECT * from "ほしリスト";
+    SELECT リストグループ.リスト名, 商品名, 値段, 購入ページURL
+    FROM リストグループ, ほしリスト
+    WHERE リストグループ.リストID = ほしリスト.リストID;;
     '''
     cursor = connection.cursor()
     cursor.execute(sql)
@@ -25,12 +27,12 @@ def get_hosis():
     hosi_list = []
     for result in results:
         hosi_data = {
-            "商品名": result[0],
-            "値段": result[1],
-            "購入ページURL": result[2]
+            "リスト名": result[0],
+            "商品名": result[1],
+            "値段": result[2],
+            "購入ページURL": result[3]
         }
         hosi_list.append(hosi_data)
-
     return jsonify(hosi_list)
 
 

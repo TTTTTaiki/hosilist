@@ -13,7 +13,7 @@ export default function ListList() {
 
   return (
     <>
-      <table>
+      <table className="table is-fullwidth is-bordered">
         <thead>
           <tr>
             <th>リストID</th>

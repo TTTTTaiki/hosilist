@@ -15,3 +15,10 @@ CREATE TABLE リストグループ (
 );
 
 SELECT * FROM "ほしリスト";
+
+SELECT リストグループ.リスト名, 商品名, 値段, 購入ページURL
+FROM リストグループ, ほしリスト
+WHERE リストグループ.リストID = ほしリスト.リストID;
+
+insert into ほしリスト (リストID, 商品名, 値段)
+values (1, 'ペン', 1000);

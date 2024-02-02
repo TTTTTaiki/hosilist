@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
-import './App.css'
 import HosiNew from './pages/HosiNew';
 import HosiList from './pages/HosiList';
 import ListNew from './pages/ListNew';
@@ -25,7 +24,7 @@ function Title() {
 function Footer() {
   return (
     <>
-      <footer className="footer">
+      <footer className="footer imo">
         <div className="content has-text-centered">
           <figure className="image">
             <img src="/images/hosiimo.png" alt="hosiimo no" />
@@ -77,7 +76,6 @@ function App() {
           </div>
         </section>
       </BrowserRouter>
-      <Footer />
     </>
   )
 }

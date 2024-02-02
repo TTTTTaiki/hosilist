@@ -2,30 +2,34 @@ import { useEffect, useState } from "react";
 import { getHosis } from "../api";
 
 export default function HosiList() {
-  const [lists, setLists] = useState([]);
+  const [hosis, setHosis] = useState([]);
 
   useEffect(() => {
     (async () => {
-      const lists = await getHosis();
-      setLists(lists);
+      const hosis = await getHosis();
+      setHosis(hosis);
     })();
   }, []);
 
   return (
     <>
-      <table>
+      <table className="table is-fullwidth is-bordered">
         <thead>
           <tr>
-            <th>リストID</th>
             <th>リスト名</th>
+            <th>商品名</th>
+            <th>値段</th>
+            <th>購入ページURL</th>
           </tr>
         </thead>
         <tbody>
-          {lists.map((list) => {
+          {hosis.map((hosi) => {
             return (
-              <tr key={list.リストID}>
-                <td>{list.リストID}</td>
-                <td>{list.リスト名}</td>
+              <tr key={[hosi.リストID, hosi.登録ID]}>
+                <td>{hosi.リスト名}</td>
+                <td>{hosi.商品名}</td>
+                <td>{hosi.値段}</td>
+                <td>{hosi.購入ページURL}</td>
               </tr>
             );
           })}
