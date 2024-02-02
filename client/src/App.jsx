@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import './App.css'
-import { getList1, postList1 } from './api'
+import ListList from "./pages/ListList";
 
 function App() {
 
@@ -22,7 +21,7 @@ function App() {
       </div>
       <div className="card">
         <button onClick={async () => {
-          const list = await getList();
+          const list = await getLists();
           console.log(list);
         }}>
           ボタン1
@@ -35,6 +34,20 @@ function App() {
           追加
         </button>
       </div>
+      <BrowserRouter>
+        <aside>
+          <ul>
+            <li>
+              <Link to="/lists/list">リスト一覧</Link>
+            </li>
+          </ul>
+        </aside>
+        <div>
+          <Routes>
+            <Route path="/lists/list" element={<ListList />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </>
   )
 }

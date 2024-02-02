@@ -13,7 +13,7 @@ export function getPerson() {
 }
 
 export function postList1(props) {
-  return request("/list1", {
+  return request("/lists", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
