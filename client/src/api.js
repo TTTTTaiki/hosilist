@@ -8,13 +8,13 @@ export function getHosis() {
   return request("/hosis");
 }
 
-export function postHosi() {
-  return request("hosis", {
+export function postHosi(hosi) {
+  return request("/hosis", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
-    body: JSON.stringify(list),
+    body: JSON.stringify(hosi)
   });
 }
 
@@ -26,18 +26,8 @@ export function postList(list) {
   return request("/lists", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
-    body: JSON.stringify(list),
-  });
-}
-
-export function postList1(props) {
-  return request("/lists", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(props),
+    body: JSON.stringify(list)
   });
 }

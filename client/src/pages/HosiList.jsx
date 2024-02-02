@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { getLists } from "../api";
+import { getHosis } from "../api";
 
 export default function HosiList() {
   const [lists, setLists] = useState([]);
 
   useEffect(() => {
     (async () => {
-      const lists = await getLists();
+      const lists = await getHosis();
       setLists(lists);
     })();
   }, []);

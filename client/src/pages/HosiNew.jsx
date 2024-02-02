@@ -9,7 +9,7 @@ export default function HosiNew() {
       <form
         onSubmit={async (event) => {
           event.preventDefault();
-          await postList({
+          await postHosi({
             リスト名: event.target.elements.listName.value
           });
           navigate("/lists/list")

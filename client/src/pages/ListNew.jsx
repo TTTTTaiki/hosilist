@@ -10,7 +10,7 @@ export default function ListNew() {
         onSubmit={async (event) => {
           event.preventDefault();
           await postList({
-            リスト名: event.target.elements.listName.value
+            'リスト名': event.target.elements.listName.value
           });
           navigate("/lists/list")
         }}

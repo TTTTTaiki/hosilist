@@ -14,3 +14,4 @@ CREATE TABLE リストグループ (
   リスト名 TEXT NOT NULL
 );
 
+SELECT * FROM "ほしリスト";
