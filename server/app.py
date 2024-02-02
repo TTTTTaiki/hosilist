@@ -11,10 +11,30 @@ connection = psycopg.connect(
 app = Flask(__name__)
 cors = CORS(app)
 
-@app.route("/list1")
+@app.route('/lists', methods=['GET'])
+def get_lists():
+    sql = '''
+    SELECT * from "リストグループ";
+    '''
+    cursor = connection.cursor()
+    cursor.execute(sql)
+    results = cursor.fetchall()
+
+    list_list = []
+    for result in results:
+        list_data = {
+            "リストID": result[0],
+            "リスト名": result[1]
+        }
+        list_list.append(list_data)
+
+    return jsonify(list_list)
+
+
+@app.route("/list1", methods=['GET'])
 def getList1():
     sql = '''
-    SELECT * FROM "リスト1";
+    SELECT * FROM "ほしリスト";
     '''
     cursor = connection.cursor()
     cursor.execute(sql)

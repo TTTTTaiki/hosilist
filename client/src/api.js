@@ -4,8 +4,8 @@ async function request(path, options = null) {
   return response.json();
 }
 
-export function getList1() {
-  return request("/list1");
+export function getLists() {
+  return request("/lists");
 }
 
 export function getPerson() {
