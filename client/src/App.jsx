@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import './App.css'
 import ListList from "./pages/ListList";
+import ListNew from './pages/ListNew';
 
 function App() {
 
@@ -40,11 +41,15 @@ function App() {
             <li>
               <Link to="/lists/list">リスト一覧</Link>
             </li>
+            <li>
+              <Link to="/lists/new">リスト追加</Link>
+            </li>
           </ul>
         </aside>
         <div>
           <Routes>
             <Route path="/lists/list" element={<ListList />} />
+            <Route path="/lists/new" element={<ListNew />} />
           </Routes>
         </div>
       </BrowserRouter>

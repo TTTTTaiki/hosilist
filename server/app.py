@@ -9,6 +9,7 @@ connection = psycopg.connect(
     password='password',
 )
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 cors = CORS(app)
 
 @app.route('/lists', methods=['GET'])
@@ -29,6 +30,50 @@ def get_lists():
         list_list.append(list_data)
 
     return jsonify(list_list)
+
+
+@app.route('/lists', methods=['POST'])
+def post_lists():
+    content = request.get_json()
+    print(content)
+    
+    try:
+        sql = '''
+        INSERT INTO "リストグループ" ("リスト名") VALUES (%s)
+        '''
+
+        values = (content['リスト名'])
+        cursor = connection.cursor()
+        cursor.execute(sql, values)
+    except Exception as e:
+        print("Error:", e)
+        connection.rollback()
+    else:
+        connection.commit()
+    
+    return 1
+
+
+@app.route("/list1", methods=["post"])
+def postList1():
+    content = request.get_json()
+    
+    try:
+        sql = '''
+        INSERT INTO "リスト1" ("商品名", "値段", "購入ページURL") 
+        VALUES (%s, %s, %s);
+        '''
+        values = (content['商品名'], content['値段'], content['購入ページURL'])
+        cursor = connection.cursor()
+        cursor.execute(sql, values)
+    except Exception as e:
+        print("Error:", e)
+        connection.rollback()
+    else:
+        connection.commit()
+    
+    return 1
+
 
 
 @app.route("/list1", methods=['GET'])
@@ -61,23 +106,3 @@ def getList1():
 #     results = cursor.fetchone()
     
 #     return jsonify({"登録人数": results[0]})
-
-@app.route("/list1", methods=["post"])
-def postList1():
-    content = request.get_json()
-    
-    try:
-        sql = '''
-        INSERT INTO "リスト1" ("商品名", "値段", "購入ページURL") 
-        VALUES (%s, %s, %s);
-        '''
-        values = (content['商品名'], content['値段'], content['購入ページURL'])
-        cursor = connection.cursor()
-        cursor.execute(sql, values)
-    except Exception as e:
-        print("Error:", e)
-        connection.rollback()
-    else:
-        connection.commit()
-    
-    return 1

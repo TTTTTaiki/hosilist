@@ -8,8 +8,14 @@ export function getLists() {
   return request("/lists");
 }
 
-export function getPerson() {
-  return request("/person");
+export function postList(list) {
+  return request("/lists", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(list),
+  });
 }
 
 export function postList1(props) {
