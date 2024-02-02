@@ -4,6 +4,20 @@ async function request(path, options = null) {
   return response.json();
 }
 
+export function getHosis() {
+  return request("/hosis");
+}
+
+export function postHosi() {
+  return request("hosis", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(list),
+  });
+}
+
 export function getLists() {
   return request("/lists");
 }
@@ -26,8 +40,4 @@ export function postList1(props) {
     },
     body: JSON.stringify(props),
   });
-}
-
-export function getPersonCount() {
-  return request("/personcount")
 }
