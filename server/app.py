@@ -39,23 +39,21 @@ def get_hosis():
 @app.route('/hosis', methods=['POST'])
 def post_hosi():
     content = request.get_json()
-    print(content)
     
     try:
         sql = '''
-        INSERT INTO "" ("リスト名") VALUES (%s);
+        INSERT INTO ほしリスト (リストID, 商品名, 値段, 購入ページURL)
+        VALUES (%(リスト名)s, %(商品名)s, %(値段)s, %(購入ページURL)s);
         '''
-
-        values = (content['リスト名'])
-        cursor = connection.cursor()
-        cursor.execute(sql, values)
+        print(content, sql)
+        connection.execute(sql, content)
     except Exception as e:
         print("Error:", e)
         connection.rollback()
+        return {"message":"失敗"}
     else:
         connection.commit()
-    
-    return 1
+        return {"message":"成功"}
 
 
 @app.route('/lists', methods=['GET'])

@@ -22,3 +22,9 @@ WHERE リストグループ.リストID = ほしリスト.リストID;
 
 insert into ほしリスト (リストID, 商品名, 値段)
 values (1, 'ペン', 1000);
+
+
+INSERT INTO ほしリスト (リストID, 商品名, 値段, 購入ページURL)
+VALUES (%(リスト名)d, %(商品名)s, %(値段)d, %(購入ページURL)s);
+
+INSERT INTO リストグループ (リスト名) VALUES (%(リスト名)s);

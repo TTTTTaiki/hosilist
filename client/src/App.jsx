@@ -63,7 +63,7 @@ function App() {
                     </li>
                   </ul>
                 </aside>
-                <div>
+                <div className="column is-10">
                   <Routes>
                     <Route path="/hosi/new" element={<HosiNew />} />
                     <Route path="/hosi/list" element={<HosiList />} />
